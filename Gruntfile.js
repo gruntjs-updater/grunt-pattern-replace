@@ -30,21 +30,33 @@ module.exports = function (grunt) {
 
 		// Configuration to be run (and then tested).
 		patternReplace : {
-			default_options : {
+			basic   : {
 				options : {
+					tokens : {
+						falcon : "punch",
+						bankai : {
+							ichigo : "Tenza Zengetsu"
+						}
+					}
 				},
-				files   : {
-					'tmp/default_options' : ['test/fixtures/testing', 'test/fixtures/123']
-				}
+				expand : true,
+				cwd    : "test/fixtures/",
+				dest   : "tmp",
+				src    : "basic"
 			},
-			custom_options  : {
+			include : {
 				options : {
-					separator   : ': ',
-					punctuation : ' !!!'
+					tokens : {
+						falcon : "punch",
+						bankai : {
+							ichigo : "Tenza Zengetsu"
+						}
+					}
 				},
-				files   : {
-					'tmp/custom_options' : ['test/fixtures/testing', 'test/fixtures/123']
-				}
+				expand : true,
+				cwd    : "test/fixtures/",
+				dest   : "tmp",
+				src    : "include"
 			}
 		},
 
