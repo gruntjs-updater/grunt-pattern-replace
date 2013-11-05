@@ -25,6 +25,8 @@ The task allow you to specify a list of tokens (a multi level dictionary), which
 Your placeholder variables can be prefixed and suffixed, by example : [[alpha]].
 You can use a dot separated variable, it allow you to group your keys logically : [[alpha.beta]] will match with the child key beta of the object alpha.
 
+At the moment, only single file examples are provided. More tests will come soon.
+
 In your project's Gruntfile, add a section named `patternReplace` to the data object passed into `grunt.initConfig()`.
 
 ```js
@@ -69,7 +71,9 @@ Directory where includes will be resolved.
 ### Usage Examples
 
 #### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+Default prefix and suffix are '\[\[' and '\]\]'.
+It allows you to define placeholder variables like '[[variable.child]]'.
+In this example, '[[falcon]]' would be replaced by 'punch' and '[[bankai.ichigo]]' by 'Tenza Zangetsu'.
 
 ```js
 grunt.initConfig({
@@ -91,14 +95,15 @@ grunt.initConfig({
 ```
 
 #### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+Same example while replacing default prefix and suffix.
+Placeholder variables would be now '((falcon))' and '((bankai.ichigo))'.
 
 ```js
 grunt.initConfig({
 	patternReplace: {
         options : {
-			prefix : "\[\[",
-			suffix : "\]\]",
+			prefix : "\(\(",
+			suffix : "\)\)",
             tokens : {
                 falcon : "punch",
                 bankai : {
