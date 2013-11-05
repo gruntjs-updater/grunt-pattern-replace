@@ -71,9 +71,9 @@ Directory where includes will be resolved.
 ### Usage Examples
 
 #### Default Options
-Default prefix and suffix are '\[\[' and '\]\]'.
-It allows you to define placeholder variables like '[[variable.child]]'.
-In this example, '[[falcon]]' would be replaced by 'punch' and '[[bankai.ichigo]]' by 'Tenza Zangetsu'.
+Default prefix and suffix are `\[\[` and `\]\]`.
+It allows you to define placeholder variables like `[[variable.child]]`.
+In this example, `[[falcon]]` would be replaced by `punch` and `[[bankai.ichigo]]` by `Tenza Zangetsu`.
 
 ```js
 grunt.initConfig({
@@ -96,7 +96,7 @@ grunt.initConfig({
 
 #### Custom Options
 Same example while replacing default prefix and suffix.
-Placeholder variables would be now '((falcon))' and '((bankai.ichigo))'.
+Placeholder variables would be now `((falcon))` and `((bankai.ichigo))`.
 
 ```js
 grunt.initConfig({
