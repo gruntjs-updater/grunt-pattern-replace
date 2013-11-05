@@ -1,6 +1,7 @@
 # grunt-pattern-replace
 
 > Allow you to parse a list of files and replace tokens based on specifics patterns.
+> Inspired by alanshaw / grunt-include-replace.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
@@ -20,6 +21,10 @@ grunt.loadNpmTasks('grunt-pattern-replace');
 ## The "patternReplace" task
 
 ### Overview
+The task allow you to specify a list of tokens (a multi level dictionary), which allow you to replace in several files placeholder "variable".
+Your placeholder variables can be prefixed and suffixed, by example : [[alpha]].
+You can use a dot separated variable, it allow you to group your keys logically : [[alpha.beta]] will match with the child key beta of the object alpha.
+
 In your project's Gruntfile, add a section named `patternReplace` to the data object passed into `grunt.initConfig()`.
 
 ```js
@@ -37,17 +42,29 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
+#### options.tokens
+Type: `Object`
+Default value: `{}`
+
+A list of tokens available for replacement in all files.
+
+#### options.prefix
 Type: `String`
-Default value: `',  '`
+Default value: `\[\[`
 
-A string value that is used to do something with whatever.
+Variable/include directive prefix.
 
-#### options.punctuation
+#### options.suffix
 Type: `String`
-Default value: `'.'`
+Default value: `\]\]`
 
-A string value that is used to do something else with whatever else.
+Variable/include directive suffix.
+
+#### options.includesDir
+Type: `String`
+Default value: Relative to including file
+
+Directory where includes will be resolved.
 
 ### Usage Examples
 
@@ -56,13 +73,21 @@ In this example, the default options are used to do something with whatever. So 
 
 ```js
 grunt.initConfig({
-  patternReplace: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
+	patternReplace: {
+        options : {
+            tokens : {
+                falcon : "punch",
+                bankai : {
+                    ichigo : "Tenza Zengetsu"
+                }
+            }
+        },
+	    expand : true,
+	    cwd    : "source/folder/",
+	    dest   : "dest/folder",
+	    src    : "file"
+    }
+});
 ```
 
 #### Custom Options
@@ -70,20 +95,27 @@ In this example, custom options are used to do something else with whatever else
 
 ```js
 grunt.initConfig({
-  patternReplace: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
+	patternReplace: {
+        options : {
+			prefix : "\[\[",
+			suffix : "\]\]",
+            tokens : {
+                falcon : "punch",
+                bankai : {
+                    ichigo : "Tenza Zengetsu"
+                }
+            }
+        },
+	    expand : true,
+        cwd    : "source/folder/",
+        dest   : "dest/folder",
+        src    : "file"
+    }
+});
 ```
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+* 2013-11-05   v0.1.0   First version.
