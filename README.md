@@ -1,6 +1,6 @@
 # grunt-pattern-replace
 
-> Allow you to parse a list of files and replace sspecifics tokens based on [D
+> Allow you to parse a list of files and replace tokens based on specifics patterns.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
@@ -17,14 +17,14 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-pattern-replace');
 ```
 
-## The "pattern_replace" task
+## The "patternReplace" task
 
 ### Overview
-In your project's Gruntfile, add a section named `pattern_replace` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `patternReplace` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
-  pattern_replace: {
+  patternReplace: {
     options: {
       // Task-specific options go here.
     },
@@ -56,7 +56,7 @@ In this example, the default options are used to do something with whatever. So 
 
 ```js
 grunt.initConfig({
-  pattern_replace: {
+  patternReplace: {
     options: {},
     files: {
       'dest/default_options': ['src/testing', 'src/123'],
@@ -70,7 +70,7 @@ In this example, custom options are used to do something else with whatever else
 
 ```js
 grunt.initConfig({
-  pattern_replace: {
+  patternReplace: {
     options: {
       separator: ': ',
       punctuation: ' !!!',
