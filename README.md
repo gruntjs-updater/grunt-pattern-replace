@@ -1,4 +1,4 @@
-# grunt-pattern-replace
+# grunt-pattern-replace [![Build Status](https://travis-ci.org/Nimaen/grunt-pattern-replace.png?branch=master)](https://travis-ci.org/Nimaen/grunt-pattern-replace)
 
 > Allow you to parse a list of files and replace tokens based on specifics patterns.
 > Inspired by alanshaw / grunt-include-replace.

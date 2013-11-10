@@ -1,7 +1,3 @@
-'use strict';
-
-var grunt = require('grunt');
-
 /*
  ======== A Handy Little Nodeunit Reference ========
  https://github.com/caolan/nodeunit
@@ -22,29 +18,31 @@ var grunt = require('grunt');
  test.ifError(value)
  */
 
-exports.patternReplace = {
-	setUp   : function (done) {
-		// setup here if necessary
-		done();
-	},
+(function() {
 
-	basic   : function (test) {
-		test.expect(1);
+	"use strict";
 
-		var actual = grunt.file.read('tmp/basic');
-		var expected = grunt.file.read('test/expected/basic');
-		test.equal(actual, expected, 'should describe what the basic behavior is.');
+	var fs = require('fs');
 
-		test.done();
-	},
+	exports.suite = {
+		test: function(test) {
 
-	include : function (test) {
-		test.expect(1);
+			var expectations = [
+				'basic',
+				'custom',
+				'include'
+			];
 
-		var actual = grunt.file.read('tmp/include');
-		var expected = grunt.file.read('test/expected/include');
-		test.equal(actual, expected, 'should describe what the include behavior is.');
+			test.expect(expectations.length);
 
-		test.done();
-	}
-};
+			expectations.forEach(function(expectation) {
+				test.equal(
+					fs.readFileSync('test/expected/' + expectation, 'utf-8'),
+					fs.readFileSync('tmp/' + expectation, 'utf-8')
+				);
+			});
+
+			test.done();
+		}
+	};
+})();
