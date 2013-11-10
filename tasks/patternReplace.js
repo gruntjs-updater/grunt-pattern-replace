@@ -17,6 +17,10 @@ module.exports = function (grunt) {
 	// Effectively register the task to grunt.
 	grunt.registerMultiTask(name, description, function () {
 
+		var numReplacedTokens = 0;
+		var numBrowsedFiles = 0;
+		var numIncludes = 0;
+
 		// Default vars.
 		var options = this.options({
 			prefix      : "\\[\\[",
@@ -72,6 +76,7 @@ module.exports = function (grunt) {
 				value = token;
 			}
 
+			numReplacedTokens++;
 			return value;
 		};
 
@@ -108,6 +113,8 @@ module.exports = function (grunt) {
 				contents = contents.replace(match, includeContents);
 
 				matches = includePattern.exec(contents);
+
+				numIncludes++;
 			}
 
 			return contents;
@@ -136,11 +143,14 @@ module.exports = function (grunt) {
 					dest = path.join(dest, src);
 				}
 
-				grunt.log.debug("Saving to : ", dest);
 				grunt.file.write(dest, contents);
-				grunt.log.ok("Processed : " + src);
+				grunt.log.debug("Processed : " + src);
+
+				numBrowsedFiles++;
 			});
 		});
+
+		grunt.log.ok("Browsed " + numBrowsedFiles.toString().cyan + " files, " + "included " + numIncludes.toString().cyan	+ " files, " + "replaced " + numReplacedTokens.toString().cyan + " tokens.");
 	});
 
 };
