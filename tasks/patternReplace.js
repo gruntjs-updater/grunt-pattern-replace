@@ -45,6 +45,8 @@ module.exports = function (grunt) {
 		 * @returns {String} the real path.
 		 */
 		var resolveIncludePath = function (rawPath, workingDir) {
+			rawPath = grunt.template.process(rawPath);
+
 			if (!grunt.file.isPathAbsolute(rawPath)) {
 				rawPath = path.resolve(path.join((options.includesDir ? options.includesDir : workingDir), rawPath));
 			} else {
