@@ -30,6 +30,7 @@
 			var expectations = [
 				'basic',
 				'custom',
+				'unknownTokens',
 				'include'
 			];
 

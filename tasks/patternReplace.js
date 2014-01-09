@@ -11,12 +11,14 @@
 module.exports = function (grunt) {
 
 	var path = require("path");
+	var _ = require("lodash");
 	var name = "patternReplace";
 	var description = "Allow you to parse a list of files and replace tokens based on specifics patterns.";
 
 	// Effectively register the task to grunt.
 	grunt.registerMultiTask(name, description, function () {
 
+		var undefinedTokens = {};
 		var numReplacedTokens = 0;
 		var numBrowsedFiles = 0;
 		var numIncludes = 0;
@@ -74,8 +76,10 @@ module.exports = function (grunt) {
 				}
 			}
 
+			// Undefined or non valid token value
 			if(typeof value === "object") {
-				value = token;
+				value = undefined;
+				undefinedTokens[token] = true;
 			}
 
 			numReplacedTokens++;
@@ -90,7 +94,7 @@ module.exports = function (grunt) {
 		 */
 		var replaceTokens = function (contents, tokens) {
 			return contents.replace(replacePattern, function (match, token) {
-				return getTokenValue(token, tokens);
+				return getTokenValue(token, tokens) || match;
 			});
 		};
 
@@ -131,8 +135,6 @@ module.exports = function (grunt) {
 					return;
 				}
 
-				grunt.log.debug('Processing : ' + src);
-
 				// Read file
 				var contents = grunt.file.read(src);
 
@@ -153,6 +155,13 @@ module.exports = function (grunt) {
 		});
 
 		grunt.log.ok("Browsed " + numBrowsedFiles.toString().cyan + " files, " + "included " + numIncludes.toString().cyan	+ " files, " + "replaced " + numReplacedTokens.toString().cyan + " tokens.");
-	});
 
+		undefinedTokens = _.keys(undefinedTokens);
+		if(undefinedTokens.length !== 0) {
+			grunt.log.oklns("Could not find " + undefinedTokens.length.toString().cyan + " tokens, see bellow :");
+			_.forEach(undefinedTokens, function(undefinedToken) {
+				grunt.log.writeln("\t" + "- ".cyan + undefinedToken);
+			});
+		}
+	});
 };

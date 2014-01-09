@@ -44,6 +44,17 @@ module.exports = function (grunt) {
 				dest   : "tmp",
 				src    : "basic"
 			},
+			unknownTokens   : {
+				options : {
+					tokens : {
+						known : "OK"
+					}
+				},
+				expand : true,
+				cwd    : "test/fixtures/",
+				dest   : "tmp",
+				src    : "unknownTokens"
+			},
 			custom   : {
 				options : {
 					prefix : "\\(\\(",
