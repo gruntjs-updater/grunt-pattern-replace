@@ -94,7 +94,11 @@ module.exports = function (grunt) {
 		 */
 		var replaceTokens = function (contents, tokens) {
 			return contents.replace(replacePattern, function (match, token) {
-				return getTokenValue(token, tokens) || match;
+				var tokenValue = getTokenValue(token, tokens);
+				if(!tokenValue && tokenValue !== '') {
+					tokenValue = match;
+				}
+				return tokenValue;
 			});
 		};
 
