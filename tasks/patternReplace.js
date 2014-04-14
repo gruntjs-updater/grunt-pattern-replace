@@ -39,7 +39,7 @@ module.exports = function (grunt) {
 
 		// Patterns
 		var includePattern = new RegExp(options.prefix + 'include\\(\\s*(.*?)(,\\s*({[\\s\\S]*?})){0,1}\\s*\\)' + options.suffix);
-		var replacePattern = new RegExp(options.prefix + '(\\w*[\\.\\w]*)' + options.suffix, 'g');
+		var replacePattern = new RegExp(options.prefix + '([\\w\\-\\|_]*[\\.\\w\\-\\|_]*)' + options.suffix, 'g');
 
 		/**
 		 * @param {String} rawPath A path to resolve.
