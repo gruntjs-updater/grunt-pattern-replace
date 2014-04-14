@@ -1,7 +1,7 @@
 {
   "name": "grunt-pattern-replace",
   "description": "Allow you to parse a list of files and replace tokens based on specifics patterns.",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "homepage": "https://github.com/nimaen/grunt-pattern-replace",
   "author": {
     "name": "Arnaud Bosc",

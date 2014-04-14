@@ -123,6 +123,8 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+* 2014-02-13   v0.1.6   Empty string tokens values are not replaced by their tokens anymore.
+* 2014-02-13   v0.1.5   Now identify empty strings token values : was previously handled as a not found token.
 * 2014-01-09   v0.1.4   Identify tokens that match with no value and print them.
 * 2014-01-08   v0.1.3   Can now use grunt template variables (with the <%= ... %> notation).
 * 2013-11-10   v0.1.2   Correct the prefix and suffix example.

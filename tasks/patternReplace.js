@@ -71,7 +71,7 @@ module.exports = function (grunt) {
 			var matches = token.split(".");
 			var numMatches = matches.length;
 			for (var matchIndex = 0; matchIndex < numMatches; matchIndex++) {
-				if (value[matches[matchIndex]]) {
+				if (typeof value[matches[matchIndex]] !== "undefined") {
 					value = value[matches[matchIndex]];
 				}
 			}
@@ -94,7 +94,11 @@ module.exports = function (grunt) {
 		 */
 		var replaceTokens = function (contents, tokens) {
 			return contents.replace(replacePattern, function (match, token) {
-				return getTokenValue(token, tokens) || match;
+				var tokenValue = getTokenValue(token, tokens);
+				if(!tokenValue && tokenValue !== '') {
+					tokenValue = match;
+				}
+				return tokenValue;
 			});
 		};
 
