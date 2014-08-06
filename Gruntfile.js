@@ -12,81 +12,114 @@ module.exports = function (grunt) {
 
 	// Project configuration.
 	grunt.initConfig({
-		jshint         : {
-			all     : [
+		jshint: {
+			all: [
 				'Gruntfile.js',
 				'tasks/*.js',
 				'<%= nodeunit.tests %>'
 			],
-			options : {
-				jshintrc : '.jshintrc'
+			options: {
+				jshintrc: '.jshintrc'
 			}
 		},
 
 		// Before generating any new files, remove any previously-created files.
-		clean          : {
-			tests : ['tmp']
+		clean: {
+			tests: ['tmp']
 		},
 
 		// Configuration to be run (and then tested).
-		patternReplace : {
-			basic   : {
-				options : {
-					tokens : {
-						falcon : "punch",
-						bankai : {
-							ichigo : "Tenza Zengetsu"
+		patternReplace: {
+			basic: {
+				options: {
+					tokens: {
+						falcon: "punch",
+						bankai: {
+							ichigo: "Tenza Zengetsu"
 						}
 					}
 				},
-				expand : true,
-				cwd    : "test/fixtures/",
-				dest   : "tmp",
-				src    : "basic"
-			},
-			unknownTokens   : {
-				options : {
-					tokens : {
-						known : "OK"
+				files: [
+					{
+						expand: true,
+						cwd: "test/fixtures/",
+						dest: "tmp",
+						src: "basic"
 					}
-				},
-				expand : true,
-				cwd    : "test/fixtures/",
-				dest   : "tmp",
-				src    : "unknownTokens"
+				]
 			},
-			custom   : {
-				options : {
-					prefix : "\\(\\(",
-					suffix : ">>",
-					tokens : {
-						falcon : "punch"
-					}
-				},
-				expand : true,
-				cwd    : "test/fixtures/",
-				dest   : "tmp",
-				src    : "custom"
-			},
-			include : {
-				options : {
-					tokens : {
-						falcon : "punch",
-						bankai : {
-							ichigo : "Tenza Zengetsu"
+			object: {
+				options: {
+					tokens: {
+						bankai: {
+							ichigo: "Tenza Zengetsu"
 						}
 					}
 				},
-				expand : true,
-				cwd    : "test/fixtures/",
-				dest   : "tmp",
-				src    : "include"
+				files: [
+					{
+						expand: true,
+						cwd: "test/fixtures/",
+						dest: "tmp",
+						src: "object"
+					}
+				]
+			},
+			unknownTokens: {
+				options: {
+					tokens: {
+						known: "OK"
+					}
+				},
+				files: [
+					{
+						expand: true,
+						cwd: "test/fixtures/",
+						dest: "tmp",
+						src: "unknownTokens"
+					}
+				]
+			},
+			custom: {
+				options: {
+					prefix: "\\(\\(",
+					suffix: ">>",
+					tokens: {
+						falcon: "punch"
+					}
+				},
+				files: [
+					{
+						expand: true,
+						cwd: "test/fixtures/",
+						dest: "tmp",
+						src: "custom"
+					}
+				]
+			},
+			include: {
+				options: {
+					tokens: {
+						falcon: "punch",
+						bankai: {
+							ichigo: "Tenza Zengetsu"
+						}
+					}
+				},
+				files: [
+					{
+						expand: true,
+						cwd: "test/fixtures/",
+						dest: "tmp",
+						src: "include"
+					}
+				]
 			}
 		},
 
 		// Unit tests.
-		nodeunit       : {
-			tests : ['test/*_test.js']
+		nodeunit: {
+			tests: ['test/*_test.js']
 		}
 
 	});

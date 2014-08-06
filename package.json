@@ -1,43 +1,43 @@
 {
-  "name": "grunt-pattern-replace",
-  "description": "Allow you to parse a list of files and replace tokens based on specifics patterns.",
-  "version": "0.2.0",
-  "homepage": "https://github.com/nimaen/grunt-pattern-replace",
-  "author": {
-    "name": "Arnaud Bosc",
-    "email": "bosc.arno@gmail.com"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/nimaen/grunt-pattern-replace.git"
-  },
-  "bugs": {
-    "url": "https://github.com/nimaen/grunt-pattern-replace/issues"
-  },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/nimaen/grunt-pattern-replace/blob/master/LICENSE-MIT"
-    }
-  ],
-  "main": "Gruntfile.js",
-  "engines": {
-    "node": ">= 0.8.0"
-  },
-  "scripts": {
-    "test": "grunt test"
-  },
-  "devDependencies": {
-	"lodash": "~2.4.1",
-    "grunt-contrib-jshint": "~0.6.0",
-    "grunt-contrib-clean": "~0.4.0",
-    "grunt-contrib-nodeunit": "~0.2.0",
-    "grunt": "~0.4.1"
-  },
-  "peerDependencies": {
-    "grunt": "~0.4.1"
-  },
-  "keywords": [
-    "gruntplugin", "pattern", "replace", "token", "regex"
-  ]
+	"name": "grunt-pattern-replace",
+	"description": "Allow you to parse a list of files and replace tokens based on specifics patterns.",
+	"version": "1.0.0",
+	"homepage": "https://github.com/nimaen/grunt-pattern-replace",
+	"author": {
+		"name": "Arnaud Bosc",
+		"email": "bosc.arno@gmail.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/nimaen/grunt-pattern-replace.git"
+	},
+	"bugs": {
+		"url": "https://github.com/nimaen/grunt-pattern-replace/issues"
+	},
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "https://github.com/nimaen/grunt-pattern-replace/blob/master/LICENSE-MIT"
+		}
+	],
+	"main": "Gruntfile.js",
+	"engines": {
+		"node": ">= 0.8.0"
+	},
+	"scripts": {
+		"test": "grunt test"
+	},
+	"devDependencies": {
+		"lodash": "~2.4.1",
+		"grunt-contrib-jshint": "~0.6.0",
+		"grunt-contrib-clean": "~0.4.0",
+		"grunt-contrib-nodeunit": "~0.2.0",
+		"grunt": "~0.4.1"
+	},
+	"peerDependencies": {
+		"grunt": "~0.4.1"
+	},
+	"keywords": [
+		"gruntplugin", "pattern", "replace", "token", "regex"
+	]
 }

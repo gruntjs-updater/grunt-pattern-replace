@@ -18,17 +18,18 @@
  test.ifError(value)
  */
 
-(function() {
+(function () {
 
 	"use strict";
 
 	var fs = require('fs');
 
 	exports.suite = {
-		test: function(test) {
+		test: function (test) {
 
 			var expectations = [
 				'basic',
+				'object',
 				'custom',
 				'unknownTokens',
 				'include'
@@ -36,7 +37,8 @@
 
 			test.expect(expectations.length);
 
-			expectations.forEach(function(expectation) {
+			expectations.forEach(function (expectation) {
+				console.log(expectation);
 				test.equal(
 					fs.readFileSync('test/expected/' + expectation, 'utf-8'),
 					fs.readFileSync('tmp/' + expectation, 'utf-8')

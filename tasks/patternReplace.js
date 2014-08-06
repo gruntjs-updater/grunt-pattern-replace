@@ -25,10 +25,10 @@ module.exports = function (grunt) {
 
 		// Default vars.
 		var options = this.options({
-			prefix      : "\\[\\[",
-			suffix      : "\\]\\]",
-			tokens      : {},
-			includesDir : ""
+			prefix: "\\[\\[",
+			suffix: "\\]\\]",
+			tokens: {},
+			includesDir: ""
 		});
 
 		// Variables available in ALL files
@@ -70,16 +70,22 @@ module.exports = function (grunt) {
 			var value = tokens;
 			var matches = token.split(".");
 			var numMatches = matches.length;
+			var isValid = false;
 			for (var matchIndex = 0; matchIndex < numMatches; matchIndex++) {
 				if (typeof value[matches[matchIndex]] !== "undefined") {
+					isValid = true;
 					value = value[matches[matchIndex]];
 				}
 			}
 
 			// Undefined or non valid token value
-			if(typeof value === "object") {
-				value = undefined;
-				undefinedTokens[token] = true;
+			if (typeof value === "object") {
+				if (isValid) {
+					value = JSON.stringify(value);
+				} else {
+					value = undefined;
+					undefinedTokens[token] = true;
+				}
 			}
 
 			numReplacedTokens++;
@@ -95,7 +101,7 @@ module.exports = function (grunt) {
 		var replaceTokens = function (contents, tokens) {
 			return contents.replace(replacePattern, function (match, token) {
 				var tokenValue = getTokenValue(token, tokens);
-				if(!tokenValue && tokenValue !== '') {
+				if (!tokenValue && tokenValue !== '') {
 					tokenValue = match;
 				}
 				return tokenValue;
@@ -158,12 +164,12 @@ module.exports = function (grunt) {
 			});
 		});
 
-		grunt.log.ok("Browsed " + numBrowsedFiles.toString().cyan + " files, " + "included " + numIncludes.toString().cyan	+ " files, " + "replaced " + numReplacedTokens.toString().cyan + " tokens.");
+		grunt.log.ok("Browsed " + numBrowsedFiles.toString().cyan + " files, " + "included " + numIncludes.toString().cyan + " files, " + "replaced " + numReplacedTokens.toString().cyan + " tokens.");
 
 		undefinedTokens = _.keys(undefinedTokens);
-		if(undefinedTokens.length !== 0) {
+		if (undefinedTokens.length !== 0) {
 			grunt.log.oklns("Could not find " + undefinedTokens.length.toString().cyan + " tokens, see bellow :");
-			_.forEach(undefinedTokens, function(undefinedToken) {
+			_.forEach(undefinedTokens, function (undefinedToken) {
 				grunt.log.writeln("\t" + "- ".cyan + undefinedToken);
 			});
 		}
