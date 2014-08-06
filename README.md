@@ -123,6 +123,7 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+* 2014-08-06   v1.0.1   Remove old node dependency on Travis.
 * 2014-08-06   v1.0.0   Major release. Now replace object values with a stringified object instead of putting it in the undefined tokens list.
 * 2014-04-14   v0.2.0   Add '-', '_' and '|' to the matching regex.
 * 2014-02-13   v0.1.6   Empty string tokens values are not replaced by their tokens anymore.
