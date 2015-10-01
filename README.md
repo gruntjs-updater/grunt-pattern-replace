@@ -77,23 +77,24 @@ In this example, `[[falcon]]` would be replaced by `punch` and `[[bankai.ichigo]
 
 ```js
 grunt.initConfig({
-	patternReplace: {
-        	options : {
-	            tokens : {
-	                falcon : "punch",
-	                bankai : {
-	                    ichigo : "Tenza Zengetsu"
-	                }
-	            }
-	        },
-	        target: {
-	        	expand : true,
-			cwd    : "source/folder/",
-			dest   : "dest/folder",
-			src    : "file"
-	        }
+    patternReplace: {
+        options: {
+            tokens: {
+                falcon: "punch",
+                bankai: {
+                    ichigo: "Tenza Zengetsu"
+                }
+            }
+        },
+        target: {
+            expand: true,
+            cwd: "source/folder/",
+            dest: "dest/folder",
+            src: "file"
+        }
     }
 });
+
 ```
 
 #### Custom Options
@@ -102,25 +103,26 @@ Placeholder variables would be now `((falcon))` and `((bankai.ichigo))`.
 
 ```js
 grunt.initConfig({
-	patternReplace: {
-        options : {
-		prefix : "\\(\\(",
-		suffix : "\\)\\)",
-            	tokens : {
-                	falcon : "punch",
-                	bankai : {
-                    		ichigo : "Tenza Zengetsu"
-                	}
-            	}
+    patternReplace: {
+        options: {
+            prefix: "\\(\\(",
+            suffix: "\\)\\)",
+            tokens: {
+                falcon: "punch",
+                bankai: {
+                    ichigo: "Tenza Zengetsu"
+                }
+            }
         },
-	target: {
-		expand : true,
-	        cwd    : "source/folder/",
-	        dest   : "dest/folder",
-	        src    : "file"
-	}
+        target: {
+            expand: true,
+            cwd: "source/folder/",
+            dest: "dest/folder",
+            src: "file"
+        }
     }
 });
+
 ```
 
 ## Contributing
